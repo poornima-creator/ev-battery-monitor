@@ -1,6 +1,6 @@
 // frontend/src/components/Layout.jsx
 
-import Sidebar from './SideBar';
+import Sidebar from './Sidebar';
 
 // Layout wraps all protected pages
 // It renders the sidebar on the left and page content on the right
