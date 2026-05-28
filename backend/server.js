@@ -32,7 +32,6 @@ const io = new Server(httpServer, {
   transports: ['polling', 'websocket']
 });
 
-const app = express();
 app.use(cors());
 app.use(express.json());
 
