@@ -19,7 +19,7 @@ const httpServer = http.createServer(app);
 const allowedOrigins = [
   'http://localhost:5173',          // local dev
   process.env.CLIENT_URL,
-  'https://ev-battery-monitor-ds4ziompi-poornima-k-s-projects.vercel.app'            // production Vercel URL (set in env)
+  'https://ev-battery-monitor-3odirvlwd-poornima-k-s-projects.vercel.app'            // production Vercel URL (set in env)
 ];
 
 const io = new Server(httpServer, {
