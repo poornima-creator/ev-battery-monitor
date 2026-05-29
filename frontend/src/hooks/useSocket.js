@@ -20,9 +20,12 @@ export function useSocket(userId) {
   useEffect(() => {
     // Create the socket connection to our backend
     const socket = io(import.meta.env.VITE_SERVER_URL, {
-      transports: ['polling', 'websocket'],
-      withCredentials: false
-    });
+  transports: ['polling', 'websocket'],
+  withCredentials: false,
+  reconnection: true,
+  reconnectionAttempts: 10,
+  reconnectionDelay: 2000,
+});
 
     // Save to ref so other functions can access it
     socketRef.current = socket;
