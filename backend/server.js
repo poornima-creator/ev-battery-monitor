@@ -10,29 +10,28 @@ import cors from 'cors';
 import connectDB from './config/db.js';
 import authRoutes from './routes/auth.js';
 import dataRoutes from './routes/data.js';
-import { initSocket } from './socket/socketHandler.js'; // ← NEW
+import { initSocket } from './socket/socketHandler.js';
 
 const app = express();
 const httpServer = http.createServer(app);
-// backend/server.js
 
-const allowedOrigins = [
-  'http://localhost:5173',          // local dev
-  process.env.CLIENT_URL,
-  'https://ev-battery-monitor-eaprdom11-poornima-k-s-projects.vercel.app'            // production Vercel URL (set in env)
-];
-
+// Allow ALL origins - works for both local and production
 const io = new Server(httpServer, {
   cors: {
-    origin: allowedOrigins,
-    methods: ['GET', 'POST'],
+    origin: "*",
+    methods: ["GET", "POST"],
     credentials: false
   },
   allowEIO3: true,
   transports: ['polling', 'websocket']
 });
 
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: false
+}));
+
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
@@ -47,7 +46,7 @@ const PORT = process.env.PORT || 4000;
 connectDB().then(() => {
   httpServer.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
-    initSocket(io); // ← NEW: start Socket.IO after server is ready
+    initSocket(io);
   });
 });
 
