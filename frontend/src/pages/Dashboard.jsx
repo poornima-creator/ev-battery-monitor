@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { useSocket } from '../hooks/useSocket';
+import { Link } from 'react-router-dom';
 
 import MetricCard   from '../components/MetricCard';
 import LiveChart    from '../components/LiveChart';

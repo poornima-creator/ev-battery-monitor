@@ -10,6 +10,7 @@ import {
 
 import { useAnalytics } from '../hooks/useAnalytics';
 import StatCard from '../components/StatCard';
+import { Link } from 'react-router-dom';
 
 // Day names for weekly chart X axis
 const DAY_NAMES = ['', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
